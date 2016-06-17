@@ -41,8 +41,9 @@ public class ItemJavelin extends ItemTerraTool implements ICausesDamage, IProjec
 	{
 		super(10F, par2EnumToolMaterial, Sets.newHashSet(new Block[] {Blocks.air}));
 		this.maxStackSize = 1;
+		damage = par2EnumToolMaterial.getDamageVsEntity();
 		this.weaponDamage = damage;
-		this.weaponRangeDamage = damage;
+		this.weaponRangeDamage = damage * 1.5f;
 		this.setMaxDamage(par2EnumToolMaterial.getMaxUses()/2);
 		setCreativeTab(TFCTabs.TFC_WEAPONS);
 	}

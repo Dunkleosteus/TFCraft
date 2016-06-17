@@ -40,25 +40,25 @@ public class ItemSetup extends TFCItems {
 	{
 																 // Harvest Level	Durability			Mining Speed		Damage	Enchant
 		//Tier 0
-		igInToolMaterial = EnumHelper.addToolMaterial("IgIn", 					1,	igInStoneUses, 		igInStoneEff, 		40,		5);
-		sedToolMaterial = EnumHelper.addToolMaterial("Sed", 					1, 	sedStoneUses, 		sedStoneEff, 		40, 	5);
-		igExToolMaterial = EnumHelper.addToolMaterial("IgEx", 					1,	igExStoneUses, 		igExStoneEff, 		40,		5);
-		mMToolMaterial = EnumHelper.addToolMaterial("MM", 						1,	mMStoneUses, 		mMStoneEff, 		40, 	5);
+		igInToolMaterial = EnumHelper.addToolMaterial("IgIn", 					1,	igInStoneUses, 		igInStoneEff, 		400,		5);
+		sedToolMaterial = EnumHelper.addToolMaterial("Sed", 					1, 	sedStoneUses, 		sedStoneEff, 		400, 	5);
+		igExToolMaterial = EnumHelper.addToolMaterial("IgEx", 					1,	igExStoneUses, 		igExStoneEff, 		400,		5);
+		mMToolMaterial = EnumHelper.addToolMaterial("MM", 						1,	mMStoneUses, 		mMStoneEff, 		400, 	5);
 		//Tier 1
-		copperToolMaterial = EnumHelper.addToolMaterial("Copper", 				2,	copperUses, 		copperEff, 			65, 	8);
+		copperToolMaterial = EnumHelper.addToolMaterial("Copper", 				2,	copperUses, 		copperEff, 			650, 	8);
 		//Tier 2
-		bronzeToolMaterial = EnumHelper.addToolMaterial("Bronze", 				2,	bronzeUses, 		bronzeEff, 			100, 	13);
-		bismuthBronzeToolMaterial = EnumHelper.addToolMaterial("BismuthBronze", 2, 	bismuthBronzeUses, 	bismuthBronzeEff, 	90, 	10);
-		blackBronzeToolMaterial = EnumHelper.addToolMaterial("BlackBronze", 	2,	blackBronzeUses, 	blackBronzeEff, 	95, 	10);
+		bronzeToolMaterial = EnumHelper.addToolMaterial("Bronze", 				2,	bronzeUses, 		bronzeEff, 			1000, 	13);
+		bismuthBronzeToolMaterial = EnumHelper.addToolMaterial("BismuthBronze", 2, 	bismuthBronzeUses, 	bismuthBronzeEff, 	900, 	10);
+		blackBronzeToolMaterial = EnumHelper.addToolMaterial("BlackBronze", 	2,	blackBronzeUses, 	blackBronzeEff, 	950, 	10);
 		//Tier 3
-		ironToolMaterial = EnumHelper.addToolMaterial("Iron", 					2, 	wroughtIronUses, 	wroughtIronEff, 	135, 	10);
+		ironToolMaterial = EnumHelper.addToolMaterial("Iron", 					2, 	wroughtIronUses, 	wroughtIronEff, 	1350, 	10);
 		//Tier 4
-		steelToolMaterial = EnumHelper.addToolMaterial("Steel", 				2,	steelUses, 			steelEff, 			170, 	10);
+		steelToolMaterial = EnumHelper.addToolMaterial("Steel", 				2,	steelUses, 			steelEff, 			1700, 	10);
 		//Tier 5
-		blackSteelToolMaterial = EnumHelper.addToolMaterial("BlackSteel", 		2,	blackSteelUses, 	blackSteelEff, 		205, 	12);
+		blackSteelToolMaterial = EnumHelper.addToolMaterial("BlackSteel", 		2,	blackSteelUses, 	blackSteelEff, 		2050, 	12);
 		//Tier 6
-		blueSteelToolMaterial = EnumHelper.addToolMaterial("BlueSteel", 		3,	blueSteelUses, 		blueSteelEff, 		240, 	22);
-		redSteelToolMaterial = EnumHelper.addToolMaterial("RedSteel", 			3,	redSteelUses, 		redSteelEff, 		240, 	22);
+		blueSteelToolMaterial = EnumHelper.addToolMaterial("BlueSteel", 		3,	blueSteelUses, 		blueSteelEff, 		2400, 	22);
+		redSteelToolMaterial = EnumHelper.addToolMaterial("RedSteel", 			3,	redSteelUses, 		redSteelEff, 		2400, 	22);
 
 		TerraFirmaCraft.LOG.info(new StringBuilder().append("Loading Items").toString());
 
@@ -150,19 +150,19 @@ public class ItemSetup extends TFCItems {
 
 		//Tools
 		igInShovel = new ItemCustomShovel(igInToolMaterial).setUnlocalizedName("IgIn Stone Shovel").setMaxDamage(igInStoneUses);
-		igInAxe = new ItemCustomAxe(igInToolMaterial, 60).setUnlocalizedName("IgIn Stone Axe").setMaxDamage(igInStoneUses);
+		igInAxe = new ItemCustomAxe(igInToolMaterial, igInToolMaterial.getDamageVsEntity()).setUnlocalizedName("IgIn Stone Axe").setMaxDamage(igInStoneUses);
 		igInHoe = new ItemCustomHoe(igInToolMaterial).setUnlocalizedName("IgIn Stone Hoe").setMaxDamage(igInStoneUses);
 
 		sedShovel= new ItemCustomShovel(sedToolMaterial).setUnlocalizedName("Sed Stone Shovel").setMaxDamage(sedStoneUses);
-		sedAxe = new ItemCustomAxe(sedToolMaterial, 60).setUnlocalizedName("Sed Stone Axe").setMaxDamage(sedStoneUses);
+		sedAxe = new ItemCustomAxe(sedToolMaterial, sedToolMaterial.getDamageVsEntity()).setUnlocalizedName("Sed Stone Axe").setMaxDamage(sedStoneUses);
 		sedHoe = new ItemCustomHoe(sedToolMaterial).setUnlocalizedName("Sed Stone Hoe").setMaxDamage(sedStoneUses);
 
 		igExShovel= new ItemCustomShovel(igExToolMaterial).setUnlocalizedName("IgEx Stone Shovel").setMaxDamage(igExStoneUses);
-		igExAxe = new ItemCustomAxe(igExToolMaterial, 60).setUnlocalizedName("IgEx Stone Axe").setMaxDamage(igExStoneUses);
+		igExAxe = new ItemCustomAxe(igExToolMaterial, igExToolMaterial.getDamageVsEntity()).setUnlocalizedName("IgEx Stone Axe").setMaxDamage(igExStoneUses);
 		igExHoe = new ItemCustomHoe(igExToolMaterial).setUnlocalizedName("IgEx Stone Hoe").setMaxDamage(igExStoneUses);
 
 		mMShovel = new ItemCustomShovel(mMToolMaterial).setUnlocalizedName("MM Stone Shovel").setMaxDamage(mMStoneUses);
-		mMAxe = new ItemCustomAxe(mMToolMaterial, 60).setUnlocalizedName("MM Stone Axe").setMaxDamage(mMStoneUses);
+		mMAxe = new ItemCustomAxe(mMToolMaterial, mMToolMaterial.getDamageVsEntity()).setUnlocalizedName("MM Stone Axe").setMaxDamage(mMStoneUses);
 		mMHoe = new ItemCustomHoe(mMToolMaterial).setUnlocalizedName("MM Stone Hoe").setMaxDamage(mMStoneUses);
 
 		bismuthBronzePick = new ItemCustomPickaxe(bismuthBronzeToolMaterial).setUnlocalizedName("Bismuth Bronze Pick").setMaxDamage(bismuthBronzeUses);
@@ -481,15 +481,15 @@ public class ItemSetup extends TFCItems {
 		redSteelKnifeHead = new ItemMiscToolHead().setUnlocalizedName("Red Steel Knife Blade");
 		steelKnifeHead = new ItemMiscToolHead().setUnlocalizedName("Steel Knife Blade");
 
-		bismuthBronzeKnife = new ItemKnife(bismuthBronzeToolMaterial, 155).setUnlocalizedName("Bismuth Bronze Knife").setMaxDamage(bismuthBronzeUses);
-		blackBronzeKnife = new ItemKnife(blackBronzeToolMaterial, 	165).setUnlocalizedName("Black Bronze Knife").setMaxDamage(blackBronzeUses);
-		blackSteelKnife = new ItemKnife(blackSteelToolMaterial, 		205).setUnlocalizedName("Black Steel Knife").setMaxDamage(blackSteelUses);
-		blueSteelKnife = new ItemKnife(blueSteelToolMaterial, 		250).setUnlocalizedName("Blue Steel Knife").setMaxDamage(blueSteelUses);
-		bronzeKnife = new ItemKnife(bronzeToolMaterial, 				150).setUnlocalizedName("Bronze Knife").setMaxDamage(bronzeUses);
-		copperKnife = new ItemKnife(copperToolMaterial, 				100).setUnlocalizedName("Copper Knife").setMaxDamage(copperUses);
-		wroughtIronKnife = new ItemKnife(ironToolMaterial, 			175).setUnlocalizedName("Wrought Iron Knife").setMaxDamage(wroughtIronUses);
-		redSteelKnife = new ItemKnife(redSteelToolMaterial, 			250).setUnlocalizedName("Red Steel Knife").setMaxDamage(redSteelUses);
-		steelKnife = new ItemKnife(steelToolMaterial,					200).setUnlocalizedName("Steel Knife").setMaxDamage(steelUses);
+		bismuthBronzeKnife = new ItemKnife(bismuthBronzeToolMaterial, bismuthBronzeToolMaterial.getDamageVsEntity()*0.75f).setUnlocalizedName("Bismuth Bronze Knife").setMaxDamage(bismuthBronzeUses);
+		blackBronzeKnife = new ItemKnife(blackBronzeToolMaterial, 	blackBronzeToolMaterial.getDamageVsEntity()*0.75f).setUnlocalizedName("Black Bronze Knife").setMaxDamage(blackBronzeUses);
+		blackSteelKnife = new ItemKnife(blackSteelToolMaterial, 		blackSteelToolMaterial.getDamageVsEntity()*0.75f).setUnlocalizedName("Black Steel Knife").setMaxDamage(blackSteelUses);
+		blueSteelKnife = new ItemKnife(blueSteelToolMaterial, 		blueSteelToolMaterial.getDamageVsEntity()*0.75f).setUnlocalizedName("Blue Steel Knife").setMaxDamage(blueSteelUses);
+		bronzeKnife = new ItemKnife(bronzeToolMaterial, 				bronzeToolMaterial.getDamageVsEntity()*0.75f).setUnlocalizedName("Bronze Knife").setMaxDamage(bronzeUses);
+		copperKnife = new ItemKnife(copperToolMaterial, 				copperToolMaterial.getDamageVsEntity()*0.75f).setUnlocalizedName("Copper Knife").setMaxDamage(copperUses);
+		wroughtIronKnife = new ItemKnife(ironToolMaterial, 			ironToolMaterial.getDamageVsEntity()*0.75f).setUnlocalizedName("Wrought Iron Knife").setMaxDamage(wroughtIronUses);
+		redSteelKnife = new ItemKnife(redSteelToolMaterial, 			redSteelToolMaterial.getDamageVsEntity()*0.75f).setUnlocalizedName("Red Steel Knife").setMaxDamage(redSteelUses);
+		steelKnife = new ItemKnife(steelToolMaterial,					steelToolMaterial.getDamageVsEntity()*0.75f).setUnlocalizedName("Steel Knife").setMaxDamage(steelUses);
 
 		flatRock = new ItemFlatGeneric().setFolder("rocks/flatrocks/").setMetaNames(Global.STONE_ALL).setUnlocalizedName("FlatRock");
 		looseRock = new ItemLooseRock().setSpecialCraftingType(flatRock).setFolder("rocks/").setMetaNames(Global.STONE_ALL).setUnlocalizedName("LooseRock");
@@ -512,7 +512,7 @@ public class ItemSetup extends TFCItems {
 		stoneKnifeHead = new ItemMiscToolHead(igInToolMaterial).setUnlocalizedName("Stone Knife Blade");
 		stoneHammerHead = new ItemMiscToolHead(igInToolMaterial).setUnlocalizedName("Stone Hammer Head");
 
-		stoneKnife = new ItemKnife(igExToolMaterial, 40).setUnlocalizedName("Stone Knife").setMaxDamage(igExStoneUses);
+		stoneKnife = new ItemKnife(igExToolMaterial, igExToolMaterial.getDamageVsEntity()*0.75f).setUnlocalizedName("Stone Knife").setMaxDamage(igExStoneUses);
 		singlePlank = new ItemPlank().setUnlocalizedName("SinglePlank");
 
 		redSteelBucketEmpty = new ItemSteelBucketRed(Blocks.air).setUnlocalizedName("Red Steel Bucket Empty");
