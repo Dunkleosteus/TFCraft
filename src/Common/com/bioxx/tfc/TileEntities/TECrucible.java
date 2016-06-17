@@ -11,7 +11,6 @@ import net.minecraft.nbt.NBTTagList;
 
 import com.bioxx.tfc.Core.TFC_Climate;
 import com.bioxx.tfc.Core.TFC_Core;
-import com.bioxx.tfc.Core.TFC_Time;
 import com.bioxx.tfc.Core.Metal.*;
 import com.bioxx.tfc.Items.ItemMeltedMetal;
 import com.bioxx.tfc.api.*;
@@ -23,7 +22,6 @@ public class TECrucible extends NetworkTileEntity implements IInventory
 	public Map<String, MetalPair> metals = new HashMap<String, MetalPair>();
 	public Alloy currentAlloy;
 	public int temperature;
-	private float tempTemperature = 0;
 	public ItemStack[] storage;
 	public byte inputTick;
 	public byte outputTick;
@@ -124,26 +122,16 @@ public class TECrucible extends NetworkTileEntity implements IInventory
 				TEForge te = (TEForge) worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
 				if (te.fireTemp >= 1 && TFCOptions.enableDebugMode)
 					temperature = 2000;
-				else
-				{
-					float hc = this.getTotalHeatCapacity();
-					float a = this.getTotalMetal();
-					tempTemperature += (((te.fireTemp - temperature)/1000)/(hc>0?hc:1 * a>0?a:1));
-					if(Math.abs(tempTemperature) > 1)
-					{
-						temperature += (int)tempTemperature;
-						tempTemperature -= (int)tempTemperature;
-					}
-					//temperature++;
-				}
+				else if (te.fireTemp > temperature)
+					temperature++;
 			}
-			/*if(tempTick > 22)
+			if(tempTick > 22)
 			{
 				tempTick = 0;
 				if(temperature > TFC_Climate.getHeightAdjustedTemp(worldObj, xCoord, yCoord, zCoord))
 					temperature--;
 			}
-*/
+
 			ItemStack stackToSmelt = storage[0];
 			if(stackToSmelt != null)
 			{
@@ -168,8 +156,6 @@ public class TECrucible extends NetworkTileEntity implements IInventory
 							{
 								stackToSmelt.setItemDamage(newDamage);
 							}
-							temperature = (int) ((temperature * this.getTotalMetal() ) + 
-									(TFC_ItemHeat.getTemp(stackToSmelt)));
 						}
 						else
 						{
@@ -182,7 +168,6 @@ public class TECrucible extends NetworkTileEntity implements IInventory
 							{
 								stackToSmelt.setItemDamage(newDamage);
 							}
-							temperature = (int) Math.max(TFC_ItemHeat.getTemp(stackToSmelt),temperature);
 						}
 						inputTick = 0;
 						updateGui((byte) 0);
@@ -194,12 +179,9 @@ public class TECrucible extends NetworkTileEntity implements IInventory
 						temperature >= TFC_ItemHeat.isCookable(stackToSmelt) && cookDelay == 0)
 				{
 					Metal mType =((ISmeltable)itemToSmelt).getMetalType(stackToSmelt);
-					short amount = ((ISmeltable)itemToSmelt).getMetalReturnAmount(stackToSmelt);
-					if(addMetal(mType, amount))
+					if(addMetal(mType, ((ISmeltable)itemToSmelt).getMetalReturnAmount(stackToSmelt)))
 					{
-						temperature = (int) (((temperature * (this.getTotalMetal() - amount )) + 
-								(amount * TFC_ItemHeat.getTemp(stackToSmelt)))/this.getTotalMetal());
-						//temperature *= 0.asd9f;
+						temperature *= 0.9f;
 						cookDelay = 40;
 						if(stackToSmelt.stackSize <= 1)
 							storage[0] = null;
@@ -295,23 +277,6 @@ public class TECrucible extends NetworkTileEntity implements IInventory
 				totalAmount += m.amount;
 		}
 		return totalAmount;
-	}
-	
-	public float getTotalHeatCapacity()
-	{
-		Iterator<MetalPair> iter = metals.values().iterator();
-		float totalCapacity = 0;
-		float totalAmount = 0;
-		while(iter.hasNext())
-		{
-			MetalPair m = iter.next();
-			if(m != null)
-			{
-				totalCapacity += (TFC_ItemHeat.getSpecificHeat(new ItemStack(m.type.meltedItem)) * m.amount);
-				totalAmount += m.amount;
-			}
-		}
-		return totalAmount > 0?(totalCapacity / totalAmount):0;
 	}
 
 	private void updateCurrentAlloy()

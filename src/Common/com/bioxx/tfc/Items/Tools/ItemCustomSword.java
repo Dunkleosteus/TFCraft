@@ -11,7 +11,6 @@ public class ItemCustomSword extends ItemWeapon
 	{
 		super(par2EnumToolMaterial, damage);
 		//this.weaponDamage = 150 + par2EnumToolMaterial.getDamageVsEntity();
-		damage = par2EnumToolMaterial.getDamageVsEntity();
 		this.damageType = dt;
 	}
 

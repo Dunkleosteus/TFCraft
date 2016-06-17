@@ -3,18 +3,18 @@ package com.bioxx.tfc.Core;
 public class TFC_MobData 
 {
 	//Steve
-	public static final float STEVE_DAMAGE = 50f;
+	public static final float STEVE_DAMAGE = 10f;
 
 	//Zombie
-	public static final int ZOMBIE_DAMAGE = 250;//25;
+	public static final int ZOMBIE_DAMAGE = 25;
 	public static final int ZOMBIE_HEALTH = 450;
 
 	//Wolf
-	public static final int WOLF_DAMAGE = 200;//80;
+	public static final int WOLF_DAMAGE = 80;
 	public static final int WOLF_HEALTH = 2000;
 
 	//Spider
-	public static final int SPIDER_DAMAGE = 100;//80;
+	public static final int SPIDER_DAMAGE = 80;
 	public static final int SPIDER_HEALTH = 1800;
 
 	//PigZombie
@@ -30,7 +30,7 @@ public class TFC_MobData
 	public static final int CAVE_SPIDER_HEALTH = 2500;
 
 	//Bear
-	public static final int BEAR_DAMAGE = 275;//175;
+	public static final int BEAR_DAMAGE = 175;
 	public static final int BEAR_HEALTH = 3000;
 
 	//Silverfish

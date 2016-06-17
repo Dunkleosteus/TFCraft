@@ -262,7 +262,7 @@ public class EntityDamageHandler
 	{
 		if(armorRating == -1000)
 			armorRating=-999;
-		return 500f / (1000f + armorRating);
+		return 1000f / (1000f + armorRating);
 	}
 
 	@SubscribeEvent

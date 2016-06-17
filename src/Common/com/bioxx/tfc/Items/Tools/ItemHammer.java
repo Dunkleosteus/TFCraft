@@ -30,7 +30,6 @@ public class ItemHammer extends ItemTerraTool implements ICausesDamage
 	public ItemHammer(ToolMaterial e, float damage)
 	{
 		super(0, e, BLOCKS);
-		damage = e.getDamageVsEntity();
 		this.damageVsEntity = damage;
 	}
 

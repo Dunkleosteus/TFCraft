@@ -241,14 +241,14 @@ public class TFC_ItemHeat
 		byte debugBump = 0;
 		if(TFCOptions.enableDebugMode)
 			debugBump = 2;
-		return TFCOptions.tempIncreaseMultiplier / getSpecificHeat(is) + debugBump; //used to be *
+		return TFCOptions.tempIncreaseMultiplier * getSpecificHeat(is) + debugBump;
 	}
 
 	public static float getTempDecrease(ItemStack is)
 	{
 		if(TFCOptions.enableDebugMode)
 			return 0;
-		return TFCOptions.tempDecreaseMultiplier / getSpecificHeat(is); //used to be *
+		return TFCOptions.tempDecreaseMultiplier * getSpecificHeat(is);
 	}
 
 	public static void handleItemHeat(ItemStack is)
